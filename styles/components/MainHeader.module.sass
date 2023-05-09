@@ -1,0 +1,53 @@
+@use "../base/_typography" as typo
+@use "../abstracts/_variables" as vars
+
+.main_header
+  position: relative
+  min-inline-size: max-content
+  min-block-size: 80px
+  inline-size: 100%
+  padding-inline: 16px
+  box-shadow: 0 2px 6px #D0D5DD
+  background-color: vars.$color-white
+  white-space: nowrap
+
+  display: flex
+  gap: 36px
+  align-items: center
+
+
+.logo_container
+  & > a
+    padding-block: 8px
+    padding-inline: 12px
+
+    display: flex
+    align-items: center
+    gap: 8px
+
+
+.gnb
+  @include typo.text--20
+  @include typo.text--regular
+  
+  padding-inline: 12px
+
+  display: flex
+  flex: 1
+
+  & > a
+    padding-block: 24px
+    padding-inline: 16px
+    color: vars.$color-gray-3
+    transition: font-weight 0.1s ease-in-out
+
+    &:hover
+      @include typo.text--bold
+      
+      color: vars.$color-black
+
+.dropdown
+  position: absolute
+  top: 80px
+  right: 20px
+  background-color: vars.$color-offwhite

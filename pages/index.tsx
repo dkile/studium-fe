@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="description" content="User interactive study platform" />
         <meta name="theme-color" content="" />
       </Head>
-      <main></main>
+      <section></section>
     </>
   );
 }

@@ -1,0 +1,27 @@
+@use "../abstracts/_variables" as vars
+  
+.profile_container
+  position: relative
+  block-size: 100%
+
+  display: flex
+  align-items: center
+
+
+.profile_btn
+  width: 68px
+  height: 68px
+  margin-bottom: 5px
+  padding: 0
+
+  display: flex
+  align-items: center
+  justify-content: center
+
+  & > img
+    border-radius: 100%
+    transition: box-shadow 0.3s ease
+
+  &:hover
+    & > img
+      box-shadow: 0px 0px 6px 1px  vars.$color-gray-1

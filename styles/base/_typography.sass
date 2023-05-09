@@ -1,0 +1,102 @@
+@use "sass:math"
+@use "../abstracts/_functions" as func
+
+// font weight
+$weight--regular: 400
+$weight--medium: 500
+$weight--bold: 700
+
+$weight--semibold: 600 // only for Source Sans Pro
+
+// font size
+$size--34: 34px
+$size--28: 28px
+$size--24: 24px
+$size--20: 20px
+$size--18: 18px
+$size--16: 16px
+$size--14: 14px
+$size--12: 12px
+$size--10: 10px
+
+@function line-height-calculate($size: 16px, $type: default)
+  $line-height-mul: 1.5
+
+  @if $type == narrow
+    $line-height-mul: 1.25
+  @else if $type == wide
+    $line-height-mul: 1.75
+  @else if $type == default
+    $line-height-mul: 1.5
+  @else
+    @error "Wrong value for type parameter in line-height-calculate function"    
+  
+  $line-height: math.ceil($size * $line-height-mul)
+  
+  @if $line-height % 2 == 1
+    $line-height: $line-height - 1
+
+  @return $line-height
+
+// text size mixins
+@mixin text--34
+  font-size: $size--34
+  line-height: line-height-calculate($size--34, narrow)
+
+@mixin text--28
+  font-size: $size--28
+  line-height: line-height-calculate($size--28, narrow)
+
+@mixin text--24
+  font-size: $size--24
+  line-height: line-height-calculate($size--24, narrow)
+
+@mixin text--20
+  font-size: $size--20
+  line-height: line-height-calculate($size--20, narrow)
+
+@mixin text--18
+  font-size: $size--18
+  line-height: line-height-calculate($size--18, narrow)
+
+@mixin text--16
+  font-size: $size--16
+  line-height: line-height-calculate($size--16, narrow)
+
+@mixin text--14
+  font-size: $size--14
+  line-height: line-height-calculate($size--14, narrow)
+
+@mixin text--16
+  font-size: $size--16
+  line-height: line-height-calculate($size--16, default)
+
+@mixin text--14
+  font-size: $size--14
+  line-height: line-height-calculate($size--14, default)
+
+@mixin text--16
+  font-size: $size--16
+  line-height: line-height-calculate($size--16, narrow)
+
+@mixin text--14
+  font-size: $size--14
+  line-height: line-height-calculate($size--14, narrow)
+
+@mixin text--12
+  font-size: $size--12
+  line-height: line-height-calculate($size--12, narrow)
+
+@mixin text-10
+  font-size: $size--10
+  line-height: line-height-calculate($size--10, narrow)
+
+// text weight mixin
+@mixin text--bold
+  font-weight: $weight--bold
+
+@mixin text--medium
+  font-weight: $weight--medium
+
+@mixin text--regular
+  font-weight: $weight--regular

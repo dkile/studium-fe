@@ -1,0 +1,41 @@
+@use "../base/_typography" as typo
+@use "../abstracts/_variables" as vars
+
+.root_container
+  min-block-size: 100vh
+  font-family: var(--font-noto-sans-kr)
+
+  display: flex
+  flex-direction: column
+  
+
+.new_study_btn
+  position: fixed
+  right: 52px
+  bottom: 52px
+  width: 72px
+  height: 72px
+  border-radius: 50%
+  background-color: vars.$color-secondary-background
+  box-shadow: 0 0 10px #00000015
+  transition: box-shadow 0.3s ease-in-out
+
+  &:hover
+    box-shadow: 0 0 16px #00000050
+
+  & > a
+    display: block
+    width: 100%
+    height: 100%
+
+    & > img
+      margin-top: 14px
+      margin-left: 6px
+    
+
+.contents_container
+  inline-size: 100%
+  max-inline-size: 1024px
+  padding-inline: 16px
+  margin-inline: auto
+  
