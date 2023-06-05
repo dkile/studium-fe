@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 import styles from "@/styles/components/MainHeader.module.sass";
 import {
@@ -9,8 +10,15 @@ import {
   BOOKMARKS_PATH,
 } from "@/utils/routes";
 import ProfileBtn from "./ProfileBtn";
+import ProfileSubmenu from "./ProfileSubmenu";
 
 function MainHeader() {
+  const [profileSubmenuVisibility, setProfileSubmenuVisibility] =
+    useState(false);
+  const handleProfileBtnClick = () => {
+    setProfileSubmenuVisibility((prev) => !prev);
+  };
+
   return (
     <header className={styles.main_header}>
       <div className={styles.logo_container}>
@@ -18,8 +26,8 @@ function MainHeader() {
           <Image
             src={`https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/studium-logo.png`}
             alt={"Studium logo"}
-            width={60}
-            height={56}
+            width={45}
+            height={42}
             aria-hidden
             className={styles.logo_img}
           />
@@ -39,14 +47,8 @@ function MainHeader() {
         <Link href={TEMPLATES_PATH}>템플릿</Link>
         <Link href={BOOKMARKS_PATH}>책갈피</Link>
       </nav>
-      <ProfileBtn />
-      <div className={styles.dropdown}>
-        <ul>
-          <li>
-            <button>회원가입/로그인</button>
-          </li>
-        </ul>
-      </div>
+      <ProfileBtn handleClick={handleProfileBtnClick} />
+      {profileSubmenuVisibility ? <ProfileSubmenu /> : null}
     </header>
   );
 }

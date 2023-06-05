@@ -9,19 +9,16 @@
 
 
 .profile_btn
-  width: 68px
-  height: 68px
-  margin-bottom: 5px
-  padding: 0
+  height: 56px
+  margin-bottom: 2px
+  padding-inline: 8px
 
   display: flex
   align-items: center
   justify-content: center
+  gap: 4px
 
   & > img
     border-radius: 100%
-    transition: box-shadow 0.3s ease
-
-  &:hover
-    & > img
-      box-shadow: 0px 0px 6px 1px  vars.$color-gray-1
+  & > svg
+    color: vars.$color-gray-1

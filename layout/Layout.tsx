@@ -24,8 +24,8 @@ function Layout({ children }: LayoutProps) {
             <Image
               src={`https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/icon/newstudy.svg`}
               alt="Create new study"
-              width={38}
-              height={40}
+              width={32}
+              height={32}
               aria-hidden
             />
           </Link>
