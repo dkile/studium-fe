@@ -1,0 +1,38 @@
+@use "../base/_typography" as typo
+@use "../abstracts/_variables" as vars
+
+.modal_background
+  position: absolute
+  top: 0px
+  left: 0px
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.5)
+
+.modal_area
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  box-sizing: border-box
+  min-width: 100px
+  min-height: 80px
+  padding: 20px
+  background-color: vars.$color-white
+  border-radius: 10px
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+  display: flex
+  justify-contents: center
+  align-items: center
+  
+
+.modal_prev
+  position: absolute
+  top: 10px
+  left: 10px
+
+.modal_cancel
+  position: absolute
+  top: 10px
+  right: 10px
+  
