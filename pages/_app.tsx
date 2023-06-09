@@ -5,8 +5,6 @@ import { Provider } from "react-redux";
 
 import Layout from "@/layout/Layout";
 
-import Layout from "@/layout/Layout";
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
