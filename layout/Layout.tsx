@@ -3,26 +3,27 @@ import Link from "next/link";
 import styles from "@/styles/layout/Layout.module.sass";
 
 import { WithChildren } from "@/utils/util-types";
-import { noto_sans_kr, source_sans_pro } from "@/utils/fonts";
+import { notoSansKr, sourceSansPro } from "@/utils/fonts";
 import MainHeader from "@/components/common/MainHeader";
 
-type LayoutProps = WithChildren<{}>;
+type LayoutProps = WithChildren<object>;
 
 function Layout({ children }: LayoutProps) {
   return (
     <div
-      className={`${styles.root_container} ${noto_sans_kr.variable} ${source_sans_pro.variable}`}
+      className={`${styles.rootContainer} ${notoSansKr.variable} ${sourceSansPro.variable}`}
     >
       <MainHeader />
-      <main className={styles.contents_container}>
+      <main className={styles.contentsContainer}>
         <button
+          type="button"
           tabIndex={-1}
           aria-label="Creating new study group buttom"
-          className={styles.new_study_btn}
+          className={styles.newStudyBtn}
         >
-          <Link href={"/study/new"}>
+          <Link href="/study/new">
             <Image
-              src={`https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/icon/newstudy.svg`}
+              src="https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/icon/newstudy.svg"
               alt="Create new study"
               width={32}
               height={32}

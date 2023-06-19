@@ -19,7 +19,7 @@ $size--14: 14px
 $size--12: 12px
 $size--10: 10px
 
-@function line-height-calculate($size: 16px, $type: default)
+@function lineHeightCalculate($size: 16px, $type: default)
   $line-height-mul: 1.5
 
   @if $type == narrow
@@ -29,7 +29,7 @@ $size--10: 10px
   @else if $type == default
     $line-height-mul: 1.5
   @else
-    @error "Wrong value for type parameter in line-height-calculate function"    
+    @error "Wrong value for type parameter in lineHeightCalculate function"    
   
   $line-height: math.ceil($size * $line-height-mul)
   
@@ -41,55 +41,55 @@ $size--10: 10px
 // text size mixins
 @mixin text--34
   font-size: $size--34
-  line-height: line-height-calculate($size--34, narrow)
+  line-height: lineHeightCalculate($size--34, narrow)
 
 @mixin text--28
   font-size: $size--28
-  line-height: line-height-calculate($size--28, narrow)
+  line-height: lineHeightCalculate($size--28, narrow)
 
 @mixin text--24
   font-size: $size--24
-  line-height: line-height-calculate($size--24, narrow)
+  line-height: lineHeightCalculate($size--24, narrow)
 
 @mixin text--20
   font-size: $size--20
-  line-height: line-height-calculate($size--20, narrow)
+  line-height: lineHeightCalculate($size--20, narrow)
 
 @mixin text--18
   font-size: $size--18
-  line-height: line-height-calculate($size--18, narrow)
+  line-height: lineHeightCalculate($size--18, narrow)
 
 @mixin text--16
   font-size: $size--16
-  line-height: line-height-calculate($size--16, narrow)
+  line-height: lineHeightCalculate($size--16, narrow)
 
 @mixin text--14
   font-size: $size--14
-  line-height: line-height-calculate($size--14, narrow)
+  line-height: lineHeightCalculate($size--14, narrow)
 
 @mixin text--16
   font-size: $size--16
-  line-height: line-height-calculate($size--16, default)
+  line-height: lineHeightCalculate($size--16, default)
 
 @mixin text--14
   font-size: $size--14
-  line-height: line-height-calculate($size--14, default)
+  line-height: lineHeightCalculate($size--14, default)
 
 @mixin text--16
   font-size: $size--16
-  line-height: line-height-calculate($size--16, narrow)
+  line-height: lineHeightCalculate($size--16, narrow)
 
 @mixin text--14
   font-size: $size--14
-  line-height: line-height-calculate($size--14, narrow)
+  line-height: lineHeightCalculate($size--14, narrow)
 
 @mixin text--12
   font-size: $size--12
-  line-height: line-height-calculate($size--12, narrow)
+  line-height: lineHeightCalculate($size--12, narrow)
 
 @mixin text-10
   font-size: $size--10
-  line-height: line-height-calculate($size--10, narrow)
+  line-height: lineHeightCalculate($size--10, narrow)
 
 // text weight mixin
 @mixin text--bold

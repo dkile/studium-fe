@@ -1,8 +1,8 @@
-@function remove-unit($value)
+@function removeUnit($value)
   @return ($value / ($value * 0 + 1))
 
-@function px-to-rem($px, $base)
+@function pxToRem($px, $base)
   @return (remove-unit($px / $base)) * 1rem
 
-@function rem-to-px($rem, $base)
+@function remToPx($rem, $base)
   @return (remove-unit($rem * $base)) * 1px

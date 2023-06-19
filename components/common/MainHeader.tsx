@@ -16,29 +16,29 @@ function MainHeader() {
   const [profileSubmenuVisibility, setProfileSubmenuVisibility] =
     useState(false);
   const handleProfileBtnClick = () => {
-    setProfileSubmenuVisibility((prev) => !prev);
+    setProfileSubmenuVisibility(prev => !prev);
   };
 
   return (
-    <header className={styles.main_header}>
-      <div className={styles.logo_container}>
+    <header className={styles.mainHeader}>
+      <div className={styles.logoContainer}>
         <Link href={HOME_PATH}>
           <Image
-            src={`https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/studium-logo.png`}
-            alt={"Studium logo"}
+            src="https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/studium-logo.png"
+            alt="Studium logo"
             width={45}
             height={42}
             aria-hidden
-            className={styles.logo_img}
+            className={styles.logoImg}
           />
           <Image
-            src={`https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/studium-title.svg`}
-            alt={"Studium title"}
+            src="https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/studium-title.svg"
+            alt="Studium title"
             width={120}
             height={40}
             aria-hidden
             priority
-            className={styles.logo_title}
+            className={styles.logoTitle}
           />
         </Link>
       </div>

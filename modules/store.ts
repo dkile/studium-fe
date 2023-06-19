@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import modalReducer from './modal';
+import { configureStore } from "@reduxjs/toolkit";
+import modalReducer from "./modal";
 
-export const store = configureStore({
-	reducer: {
-		modalInfo: modalReducer,
-	},
+const store = configureStore({
+  reducer: {
+    modalInfo: modalReducer,
+  },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export default store;

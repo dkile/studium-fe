@@ -1,8 +1,14 @@
-export type modalType = 'login' | 'join' | 'joinCompelete';
-export type eachModalState = {
-    isShow: boolean;
-    prevModal: modalType | '';
-}
-export type modalState = {
-    [key in modalType] : eachModalState
-}
+export type ModalType = "login" | "join" | "joinCompelete";
+
+export type EachModalState = {
+  isShow: boolean;
+  prevModal: ModalType | "";
+};
+
+export type ModalState = {
+  [key in ModalType]: EachModalState;
+};
+
+export type RootState = {
+  modalInfo: ModalState;
+};

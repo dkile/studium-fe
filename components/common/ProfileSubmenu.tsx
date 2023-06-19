@@ -3,14 +3,20 @@ import styles from "@/styles/components/ProfileSubmenu.module.sass";
 function ProfileSubmenu() {
   return (
     <div
-      className={`${styles.submenu_container} ${styles.profile_submenu_container}`}
+      className={`${styles.submenuContainer} ${styles.profileSubmenuContainer}`}
     >
-      <div className={styles.submenu_content}>
-        <div className={styles.auth_btns_container}>
-          <button className={`${styles.signup_btn} ${styles.submenu_btn}`}>
+      <div className={styles.submenuContent}>
+        <div className={styles.authBtnsContainer}>
+          <button
+            type="button"
+            className={`${styles.signupBtn} ${styles.submenuBtn}`}
+          >
             회원가입
           </button>
-          <button className={`${styles.signin_btn} ${styles.submenu_btn}`}>
+          <button
+            type="button"
+            className={`${styles.signinBtn} ${styles.submenuBtn}`}
+          >
             로그인
           </button>
         </div>

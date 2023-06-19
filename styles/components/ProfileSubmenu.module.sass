@@ -1,7 +1,7 @@
 @use "../abstracts/_variables" as vars
 @use "../base/_typography" as typo
   
-.submenu_container
+.submenuContainer
   
   padding: 32px
   border-radius: 4px
@@ -11,7 +11,7 @@
   z-index: 1
   
 
-.profile_submenu_container
+.profileSubmenuContainer
   position: absolute
   top: 48px
   right: 32px
@@ -23,18 +23,18 @@
   gap: 24px
   
 
-.submenu_content
+.submenuContent
   display: flex
   flex-direction: column
   gap: 32px
 
-.auth_btns_container
+.authBtnsContainer
   display: flex
   flex-direction: column
   gap: 16px
 
 
-.submenu_btn
+.submenuBtn
   @include typo.text--14
   
   min-inline-size: 24ch
@@ -46,7 +46,7 @@
   transition-timing-function: ease-in-out
 
 
-.signup_btn
+.signupBtn
   background: vars.$color-primary
   color: vars.$color-white
   border: 1px solid vars.$color-primary
@@ -55,7 +55,7 @@
     background-color: vars.$color-primary--dark
     border: 1px solid vars.$color-primary--dark
 
-.signin_btn
+.signinBtn
   border: 1px solid vars.$color-gray-2
   background-color: vars.$color-white
   color: vars.$color-gray-2

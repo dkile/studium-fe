@@ -1,6 +1,6 @@
 import "@/styles/base/globals.sass";
 import type { AppProps } from "next/app";
-import { store } from "@/modules/store";
+import store from "@/modules/store";
 import { Provider } from "react-redux";
 
 import Layout from "@/layout/Layout";
