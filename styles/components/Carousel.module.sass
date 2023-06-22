@@ -1,0 +1,97 @@
+@use "../abstracts/_mixins" as mix
+@use "../abstracts/_variables" as vars
+  
+.carousel
+  $carousel-item-size: 90%
+  $carousel-gutter-size: calc((100% - $carousel-item-size) / 2)
+
+  display: grid
+  grid-template-columns: $carousel-gutter-size [scroller-start] 1fr [scroller-end] $carousel-gutter-size
+
+.carouselScroller
+  @include mix.scrollbarHide
+
+  grid-row: 1/-1
+  grid-column: 1/-1
+  padding-block: 16px
+  overflow-x: auto
+  overscroll-behavior-x: contain
+  scroll-snap-type: x none
+  scroll-behavior: smooth
+  
+  display: flex
+  gap: 32px
+  
+
+.carouselSnap 
+  scroll-snap-align: start
+
+
+.carouselControl
+  display: contents
+
+  & > .carouselSwipe 
+    &:not([disabled="true"]):active 
+      transform: scale(.95)
+    
+  
+.carouselSwipe
+  $shadow-size: 1px
+  $shadow-highlight-light: hsl(0 0% 50% / 10%)
+  $shadow-highlight: $shadow-highlight-light
+
+  grid-row: 1
+  place-self: center
+  background: transparent
+  color: vars.$color-gray-3
+  inline-size: 40px
+  aspect-ratio: 1/1
+  border-radius: 50%
+  box-shadow: 0 0 0 $shadow-size $shadow-highlight
+  border: 1px solid transparent
+  padding: 0
+  overflow: hidden
+  z-index: 1
+  transition: opacity .5s vars.$ease-2 .5s, transform .2s vars.$ease-4, box-shadow .2s vars.$ease-4, background-color .2s vars.$ease-4, outline-offset 145ms vars.$ease-2
+  
+
+  &:hover 
+    box-shadow: 0 0 0 4px $shadow-highlight
+    
+  
+
+  &[disabled] 
+    cursor: not-allowed
+    transition-delay: 0s
+
+    & > svg 
+      opacity: .25
+    
+
+  &:not([disabled]):is(:hover, :focus-visible) 
+    color: vars.$color-primary
+    background-color: vars.$color-white
+
+  
+  &[data-swipe-direction="left"]
+    grid-column: 1
+    // margin-right: 56px
+
+  &[data-swipe-direction="right"]
+    grid-column: 3
+    // margin-left: 56px
+
+
+  &[data-swipe-direction="right"]:not([disabled]):is(:hover, :focus-visible) svg > path 
+    $x: 3px
+    transform: translateX($x) scale(.95)
+    transition: transform .5s vars.$ease-squish-3
+    transform-origin: center center
+  
+
+  &[data-swipe-direction="left"]:not([disabled]):is(:hover, :focus-visible) svg > path 
+    $x: -3px
+    transform: translateX($x) scale(.95)
+    transition: transform .5s vars.$ease-squish-3
+    transform-origin: center center
+ 

@@ -1,4 +1,56 @@
-main
-  block-size: 100%
-  inline-size: 100%
-  background-color: #fff
+@use "../base/_typography" as typo
+@use "../abstracts/_mixins" as mix
+
+.recommendsContainer
+  padding-block: 32px
+  
+  & > header
+    display: flex
+    justify-content: between
+    align-items: center
+  
+  & > div
+    margin-top: 8px
+
+
+.recommendsContent
+  & > .caoursel_snap
+    min-inline-size: 224px
+
+
+.recommendsTitle
+  @include typo.text--24
+  @include typo.text--bold
+  @include mix.lineClampEllipsis(2)
+  
+  max-inline-size: 480px
+
+  
+.recruitArticlesContainer
+  padding-block: 16px
+
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(309px, 1fr))
+  gap: 32px
+
+  & > li
+    min-inline-size: 309px
+
+
+.recommendsHeader
+  display: flex
+  justify-content: space-between
+
+
+.sortWrapper
+  position: relative
+
+
+.sortBtn
+  @include typo.text--16
+  @include typo.text--medium
+  
+
+.sortMenu
+  position: absolute
+  
