@@ -1,5 +1,5 @@
 import Modal from "@/components/common/Modal";
-import useModalTest from "./useModalTest";
+import useModalTest from "../components/common/hooks/useModalTest";
 
 export default function ModalTest() {
   const { clickBtn } = useModalTest();

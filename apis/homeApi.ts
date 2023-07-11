@@ -38,26 +38,18 @@ export const getHomeResponseData = async (): Promise<HomeResponse> => {
 export const getRecruitArticlesResponseData = async (
   size: number,
   lastArticleId: number,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   sort: string,
 ): Promise<RecruitArticlesResponse> => {
   // const articlesData = await fetchData(
   //   studium.home.articles(size, lastArticleId, sort)
   // );
 
-  if (sort === "최신순") {
-    const articlesData = {
-      recruit_articles: recruitArticleListData.slice(
-        lastArticleId,
-        lastArticleId + size,
-      ),
-      last_recruit_article_id: lastArticleId + size,
-    };
-    return articlesData;
-  }
   const articlesData = {
-    recruit_articles: recruitArticleListData
-      .toReversed()
-      .slice(lastArticleId, lastArticleId + size),
+    recruit_articles: recruitArticleListData.slice(
+      lastArticleId,
+      lastArticleId + size,
+    ),
     last_recruit_article_id: lastArticleId + size,
   };
   return articlesData;

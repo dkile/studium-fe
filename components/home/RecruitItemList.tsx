@@ -26,7 +26,7 @@ function RecruitItemList({
             const { recruit_articles: articles } =
               await factory.additionalArticle(
                 100,
-                recruitArticles.at(-1)?.id,
+                recruitArticles.at(-1)!.id,
                 sortType,
               );
             if (articles.length === 0) {
