@@ -1,15 +1,14 @@
 import styles from "@/styles/components/Carousel.module.sass";
+import { LiHTMLAttributes, useEffect, useRef } from "react";
 import { WithChildren } from "@/utils/util-types";
-import { useEffect, useRef } from "react";
 import CarouselSwiper from "./CarouselSwiper";
-import CarouselItem from "./CarouselItem";
 
-type CarouselProps = WithChildren<{
+export type CarouselProps = WithChildren<{
   showSwiper?: boolean;
 }>;
 
 function Carousel({ showSwiper = false, children }: CarouselProps) {
-  const carouselScrollerRef = useRef(null);
+  const carouselScrollerRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver(
@@ -45,6 +44,16 @@ function Carousel({ showSwiper = false, children }: CarouselProps) {
         {children}
       </ul>
     </div>
+  );
+}
+
+export type CarouselItemProps = LiHTMLAttributes<HTMLLIElement>;
+
+function CarouselItem({ children, ...props }: CarouselItemProps) {
+  return (
+    <li className={styles.carouselSnap} {...props}>
+      {children}
+    </li>
   );
 }
 

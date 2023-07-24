@@ -2,59 +2,53 @@
 @use "../abstracts/_mixins" as mix
 @use "../abstracts/_variables" as vars
   
-.studyItem
+.overviewContainer
   min-inline-size: 224px
   display: flex
   flex-direction: column
   gap: 8px
 
 
-.studyItemMetric
+.overviewRemainTime
   @include typo.text--14
   @include typo.text--medium
   
   color: vars.$color-red
 
 
-.studyItemHeader
-  display: flex
-  justify-content: space-between
+.overviewTitle
+  @include typo.text--20
+  @include typo.text--bold
+  @include mix.lineClampEllipsis(2)
 
-  & h3
-    @include typo.text--20
-    @include typo.text--bold
-    @include mix.lineClampEllipsis(2)
-
-    max-inline-size: 216px
-    word-break: break-all
+  max-inline-size: 216px
+  word-break: break-all
 
 
-.studyItemDescription
+.overviewDescription
   @include typo.text--16
   @include typo.text--regular
   @include mix.lineClampEllipsis(3)
   
+  margin-top: 8px
   color: vars.$color-gray-4
   word-break: break-all
   
 
-.studyItemTagList
+.overviewTags
   overflow-inline: hidden
 
   display: flex
   gap: 4px
   
 
-.studyItemTag
+.overviewTag
   @include typo.text--12
   @include typo.text--regular
 
   border-radius: 16px
   background-color: vars.$color-violet
   color: vars.$color-white
-
-  & > a
-    display: block
-    padding-block: 4px
-    padding-inline: 12px
+  padding-block: 4px
+  padding-inline: 12px
     
