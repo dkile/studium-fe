@@ -1,7 +1,7 @@
 import {
   getHomeResponseData,
   getRecruitArticlesResponseData,
-} from "@/apis/homeApi";
+} from "@/apis/home/api";
 import { StudyOverview } from "@/types/study";
 
 export type HomePage = {
