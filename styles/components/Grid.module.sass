@@ -1,0 +1,9 @@
+@use "../abstracts/_variables" as vars
+  
+$grid-gap: 32px
+$grid-column-max: 3
+
+.grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax((vars.$desktop-max - vars.$safe-zone * 2 - $grid-gap * ($grid-column-max - 1)) / $grid-column-max, 1fr))
+  gap: $grid-gap
