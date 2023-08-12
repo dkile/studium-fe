@@ -1,0 +1,74 @@
+@use "../base/_typography" as typo
+@use "../abstracts/_variables" as vars
+
+.container
+  padding-block: 16px
+
+  display: grid
+  grid-template-columns: [main] 1fr [side] 160px
+  min-inline-size: 736px
+
+.studyContainer
+  display: flex
+  flex-direction: column
+  gap: 72px
+
+
+.studyTitle
+  @include typo.text--28
+
+  padding-block: 24px
+  
+.studyTagList
+  display: flex
+  flex-wrap: wrap
+  gap: 8px
+
+.studyTag
+  @include typo.text--12
+
+  color: vars.$color-white
+  background-color: vars.$color-rose
+  border-radius: 12px
+  
+  & > a
+    color: inherit
+    display: block
+    padding-block: 4px
+    padding-inline: 12px 
+  
+.studyContent
+  display: flex
+  flex-direction: column
+  gap: 48px
+
+.studyDetail
+  min-block-size: 72px
+  
+  display: flex
+  gap: 168px
+
+
+.studyDetailTitle
+  min-inline-size: 12ch
+
+
+.studyLeaderDetail
+  display: flex
+  gap: 32px
+
+.sidePanel
+  padding-block: 32px
+
+.buttonContainer
+  display: flex
+  gap: 16px
+
+.applyBtn
+  @include typo.text--16
+  
+  padding-block: 10px
+  padding-inline: 20px
+  color: vars.$color-white
+  border-radius: 8px
+  background-color: vars.$color-primary
