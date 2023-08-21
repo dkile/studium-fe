@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import styles from "@/styles/pages/Home.module.sass";
 import { StudyOverview } from "@/types/study";
-import { getStudyOverviews } from "@/factories/homeFactory";
+import { getStudyList } from "@/factories/homeFactory";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import PostBoard from "@/components/home/PostBoard";
 import Dropdown, { DropdownItem } from "@/components/common/Dropdown";
@@ -16,10 +16,13 @@ type Props = {
 };
 
 function StudyPostBoard({ studies }: Props) {
+  const loadingItemCount = 100;
   const observableRef = useRef<HTMLDivElement | null>(null);
   const [studyList, setStudyList] = useState<StudyOverview[]>(studies);
   const [studySort, setStudySort] = useState<string>("최신순");
-  const [isLastItem, setIsLastItem] = useState(false);
+  const [isLastItem, setIsLastItem] = useState<boolean>(
+    studies.length < loadingItemCount,
+  );
   const studySortItems: DropdownItem[] = [
     {
       label: "최신순",
@@ -40,15 +43,13 @@ function StudyPostBoard({ studies }: Props) {
   ];
 
   const onIntersect = async () => {
-    const loadingItemCnt = 100;
-
-    const newStudyList = await getStudyOverviews(
-      loadingItemCnt,
+    const newStudyList = await getStudyList(
+      loadingItemCount,
       studyList.at(-1)?.id,
       studySort,
     );
 
-    if (newStudyList.length < loadingItemCnt) {
+    if (newStudyList.length < loadingItemCount) {
       setIsLastItem(true);
     }
     setStudyList(sl => [...sl, ...newStudyList]);
@@ -58,7 +59,7 @@ function StudyPostBoard({ studies }: Props) {
     if (e === undefined || studySort === e.currentTarget.value) return;
 
     setStudySort(e.currentTarget.value);
-    const newStudyList = await getStudyOverviews(100, 0, e.currentTarget.value);
+    const newStudyList = await getStudyList(100, 0, e.currentTarget.value);
     setStudyList(newStudyList);
   };
 

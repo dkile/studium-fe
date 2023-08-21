@@ -1,56 +1,23 @@
-// import fetchData from "@/utils/util-func";
-// import studium from "./paths";
-import { HomeResponse, RecruitArticlesResponse } from "@/apis/home/types";
+import { OnFireStudyList, StudyResponse } from "@/apis/home/types";
 
-const createRecruitItem = (count: number) =>
-  Array.from({ length: count }, (v, i) => i + 1).map(v => ({
-    id: v,
-    title: `스프링 기초 스터디 ${v}`,
-    description:
-      "스프링 6 버전에서 새로 도입된 개념과 스프링 프레임워크의 핵심 요소들을 공부합니다.",
-    tags: [
-      {
-        id: 1,
-        label: "BE",
-      },
-      {
-        id: 2,
-        label: "Spring",
-      },
-    ],
-    createdAt: new Date(),
-    expiresAt: new Date(),
-  }));
+export const fetchStudyList = async (): Promise<StudyResponse> => {
+  const res = await fetch(`https://api.server.d0lim.com/studium/api/v1/study`);
+  if (!res.ok) {
+    throw new Error(`study list response not error. status-${res.status}`);
+  }
+  const data = await res.json();
 
-const recruitArticleListData = createRecruitItem(500);
-const popularRecruitArticleData = createRecruitItem(12);
-
-export const getHomeResponseData = async (): Promise<HomeResponse> => {
-  // const homeData = await fetchData(studium.home.base());
-  const homeData = {
-    popularRecruitArticles: popularRecruitArticleData,
-    recruitArticles: recruitArticleListData.slice(0, 100),
-    lastRecruitArticleId: 100,
-  };
-  return homeData;
+  return data;
 };
 
-export const getRecruitArticlesResponseData = async (
-  size: number,
-  lastArticleId: number,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  sort: string,
-): Promise<RecruitArticlesResponse> => {
-  // const articlesData = await fetchData(
-  //   studium.home.articles(size, lastArticleId, sort)
-  // );
+export const fetchOnFireStudyList = async (): Promise<OnFireStudyList> => {
+  const res = await fetch(
+    `https://api.server.d0lim.com/studium/api/v1/study/on-fire`,
+  );
+  if (!res.ok) {
+    throw new Error(`On fire sutdy list response error. status-${res.status}`);
+  }
+  const data = await res.json();
 
-  const articlesData = {
-    recruitArticles: recruitArticleListData.slice(
-      lastArticleId,
-      lastArticleId + size,
-    ),
-    lastRecruitArticleId: lastArticleId + size,
-  };
-  return articlesData;
+  return data;
 };
