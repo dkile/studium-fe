@@ -1,13 +1,14 @@
 import Link from "next/link";
 import styles from "@/styles/components/StudyOverviewCard.module.sass";
 import Card from "@/components/common/Card";
+import { Tag } from "@/types/study";
 
 type Props = {
   id: number;
   title: string;
   description: string;
   remainTime: string;
-  tags: { id: number; label: string }[];
+  tags: Tag[];
 };
 
 function StudyOverviewCard({
@@ -33,7 +34,7 @@ function StudyOverviewCard({
         <ul className={styles.overviewTags}>
           {tags.map(tag => (
             <li key={tag.id} className={styles.overviewTag}>
-              {tag.label}
+              {tag.name}
             </li>
           ))}
         </ul>

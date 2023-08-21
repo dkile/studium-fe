@@ -1,8 +1,6 @@
-import {
-  getHomeResponseData,
-  getRecruitArticlesResponseData,
-} from "@/apis/home/api";
+import { fetchOnFireStudyList, fetchStudyList } from "@/apis/home/api";
 import { StudyOverview } from "@/types/study";
+import { calculateDateDiff } from "@/utils/util-func";
 
 export type HomePage = {
   data: {
@@ -14,51 +12,62 @@ export type HomePage = {
   };
 };
 
+const convertDateDiffToRemainTimeVO = (diff: {
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+}) => `마감일 ${diff.day}일 ${diff.hour}시간 남음`;
+
 export const getHomePageData = async (): Promise<HomePage> => {
-  const { popularRecruitArticles: popularArticles, recruitArticles: articles } =
-    await getHomeResponseData();
-  const resolvedPopularOverviews = popularArticles.map(article => ({
-    id: article.id,
-    title: article.title,
-    description: article.description,
-    remainTime: "마감일 2일 17시간 남음",
-    tags: article.tags,
+  const [popularStudyList, studyList] = await Promise.all([
+    fetchOnFireStudyList(),
+    fetchStudyList(),
+  ]);
+  const resolvedPopularList = popularStudyList.map(study => ({
+    id: study.id,
+    title: study.name,
+    description: study.intro,
+    remainTime: convertDateDiffToRemainTimeVO(
+      calculateDateDiff(new Date(), new Date(study.recruitEndDate)),
+    ),
+    tags: study.tags,
   }));
-  const resolvedOverviews = articles.map(article => ({
-    id: article.id,
-    title: article.title,
-    description: article.description,
-    remainTime: "마감일 2일 17시간 남음",
-    tags: article.tags,
+  const resolvedStudyList = studyList.map(study => ({
+    id: study.id,
+    title: study.name,
+    description: study.intro,
+    remainTime: convertDateDiffToRemainTimeVO(
+      calculateDateDiff(new Date(), new Date(study.recruitEndDate)),
+    ),
+    tags: study.tags,
   }));
 
   return {
     data: {
       privatePosts: {
-        popularStudyPosts: resolvedPopularOverviews,
+        popularStudyPosts: resolvedPopularList,
       },
-      studyPosts: resolvedOverviews,
+      studyPosts: resolvedStudyList,
     },
   };
 };
 
-export const getStudyOverviews = async (
+export const getStudyList = async (
   size: number,
   lastOverviewId = 0,
   sort = "최신순",
 ) => {
-  const { recruitArticles: articles } = await getRecruitArticlesResponseData(
-    size,
-    lastOverviewId,
-    sort,
-  );
-  const resolvedOverviews = articles.map(article => ({
-    id: article.id,
-    title: article.title,
-    description: article.description,
-    remainTime: "마감일 2일 17시간 남음",
-    tags: article.tags,
+  const studyList = await fetchStudyList();
+  const resolvedList = studyList.map(study => ({
+    id: study.id,
+    title: study.name,
+    description: study.intro,
+    remainTime: convertDateDiffToRemainTimeVO(
+      calculateDateDiff(new Date(), new Date(study.recruitEndDate)),
+    ),
+    tags: study.tags,
   }));
 
-  return resolvedOverviews;
+  return resolvedList;
 };
