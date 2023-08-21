@@ -1,6 +1,6 @@
-import { getStudyById } from "@/apis/study/api";
 import { StudyDetail } from "@/types/study";
 import { convertDateToFormat, extractTimeInFormat } from "@/utils/util-func";
+import { getStudyById } from "@/apis/study/api";
 
 const getStudyDetail = async (studyId: number): Promise<StudyDetail> => {
   const [study] = await Promise.all([getStudyById(studyId)]);

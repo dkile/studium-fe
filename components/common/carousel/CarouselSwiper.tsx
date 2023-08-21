@@ -1,8 +1,7 @@
 import styles from "@/styles/components/Carousel.module.sass";
 
-import Prev from "@/components/common/icon/Prev";
-import Next from "@/components/common/icon/Next";
 import Button from "@/components/common/Button";
+import Icon from "../Icon";
 
 function CarouselSwiper() {
   const onClickNextBtn = () => {
@@ -45,7 +44,7 @@ function CarouselSwiper() {
         onClick={onClickPrevBtn}
         className={styles.carouselSwipe}
       >
-        <Prev />
+        <Icon name="arrow-head-left" />
       </Button>
       <Button
         type="button"
@@ -53,7 +52,7 @@ function CarouselSwiper() {
         onClick={onClickNextBtn}
         className={styles.carouselSwipe}
       >
-        <Next />
+        <Icon name="arrow-head-right" />
       </Button>
     </div>
   );

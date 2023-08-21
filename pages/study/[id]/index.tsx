@@ -4,9 +4,9 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import styles from "@/styles/pages/Study.module.sass";
 import StudyInfo from "@/components/study/StudyInfo";
 import ApplyBtn from "@/components/study/ApplyBtn";
-import BookmarkBtn from "@/components/study/BookmarkBtn";
 import getStudyDetail from "@/factories/studyFactory";
 import { ParsedUrlQuery } from "querystring";
+import Icon from "@/components/common/Icon";
 
 export const getServerSideProps: GetServerSideProps<{
   view: StudyDetail;
@@ -25,7 +25,9 @@ function Study({
       <StudyInfo info={view} />
       <div className={styles.sidePanel}>
         <div className={styles.buttonContainer}>
-          <BookmarkBtn />
+          <button type="button">
+            <Icon name="bookmark" />
+          </button>
           <ApplyBtn studyId={view.id} />
         </div>
       </div>
