@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "@/styles/pages/Study.module.sass";
 
 type StudyTagListProps = {
-  tags: { id: number; label: string }[];
+  tags: { id: number; name: string }[];
 };
 
 function StudyTagList({ tags }: StudyTagListProps) {
@@ -11,7 +11,7 @@ function StudyTagList({ tags }: StudyTagListProps) {
     <ul className={styles.studyTagList}>
       {tags.map(tag => (
         <li key={tag.id} className={styles.studyTag}>
-          <Link href={`/tag/${tag.id}`}>{tag.label}</Link>
+          <Link href={`/tag/${tag.id}`}>{tag.name}</Link>
         </li>
       ))}
     </ul>
