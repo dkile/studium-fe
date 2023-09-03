@@ -35,8 +35,9 @@ export const calculateDateDiff = (before: Date, after: Date) => {
     hour: hourDiff,
     minute: minuteDiff,
     second: secondDiff,
-  };
-  
+  }; 
+}
+
 export const convertDateToObj = (date: Date) => ({
   year: date.getFullYear(),
   month: date.getMonth(),

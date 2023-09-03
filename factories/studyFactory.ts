@@ -22,15 +22,15 @@ const getStudyDetail = async (studyId: number): Promise<StudyDetail> => {
     tags: [
       {
         id: 1,
-        label: "Label",
+        name: "Label",
       },
       {
         id: 2,
-        label: "Label",
+        name: "Label",
       },
       {
         id: 3,
-        label: "Label",
+        name: "Label",
       },
     ],
     rules: study.rules,
