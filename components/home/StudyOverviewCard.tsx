@@ -32,8 +32,9 @@ function StudyOverviewCard({
       </Link>
       <Card.Addon>
         <ul className={styles.overviewTags}>
-          {tags.map(tag => (
-            <li key={tag.id} className={styles.overviewTag}>
+          {tags.map((tag, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={i} className={styles.overviewTag}>
               {tag.name}
             </li>
           ))}

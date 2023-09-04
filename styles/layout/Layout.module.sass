@@ -41,6 +41,33 @@
   max-inline-size: 1024px
   min-inline-size: 768px
   padding-inline: 16px
+  padding-block: 48px
   margin-inline: auto
-  
 
+
+.mainAddons
+  display: flex
+  gap: 16px
+
+
+.loginBtn
+  padding-block: 12px
+  padding-inline: 16px
+  color: vars.$color-gray-3
+  border-radius: 8px
+  transition: background-color 0.15s vars.$ease-in-out-1
+
+  &:hover
+    background-color: vars.$color-offwhite
+
+
+.joinBtn
+  padding-block: 12px
+  padding-inline: 16px
+  color: vars.$color-white
+  background-color: vars.$color-primary
+  border-radius: 12px
+  transition: background-color 0.1s vars.$ease-in-4
+
+  &:hover
+    background-color: vars.$color-primary--dark

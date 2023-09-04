@@ -52,6 +52,7 @@ function Dropdown({ trigger, items, selected, onChange }: DropdownProps) {
             <Button
               value={selected.value}
               onClick={onClickItem}
+              data-selected="true"
               className={styles.dropdownItem}
               autoFocus
             >
@@ -63,7 +64,11 @@ function Dropdown({ trigger, items, selected, onChange }: DropdownProps) {
             .filter(item => item.value !== selected.value)
             .map(item => (
               <Menu.Item key={generateID("studium-dropdown")}>
-                <Button value={item.value} onClick={onClickItem}>
+                <Button
+                  value={item.value}
+                  onClick={onClickItem}
+                  className={styles.dropdownItem}
+                >
                   {item.icon !== undefined ? item.icon : null}
                   {item.label !== undefined ? item.label : null}
                 </Button>

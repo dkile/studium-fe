@@ -5,10 +5,9 @@ import StudyInfoPanel from "./StudyInfoPanel";
 type StudyLeaderInfoProps = {
   leader: {
     id: number;
-    name: string;
+    nickname: string;
     intro: string;
-    thumnail: string;
-    email: string;
+    profileUrl: string;
   };
 };
 
@@ -19,12 +18,11 @@ function StudyLeaderInfo({ leader }: StudyLeaderInfoProps) {
         <Image
           width={48}
           height={48}
-          src={leader.thumnail}
+          src={leader.profileUrl}
           alt="leader thumbnail"
         />
         <div>
-          <h3 className={styles.studyLeaderName}>{leader.name}</h3>
-          <small className={styles.studyLeaderEmail}>{leader.email}</small>
+          <h3 className={styles.studyLeaderName}>{leader.nickname}</h3>
         </div>
       </div>
       <p className={styles.studyDetailDescription}>{leader.intro}</p>

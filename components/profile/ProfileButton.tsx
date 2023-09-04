@@ -1,24 +1,21 @@
 import styles from "@/styles/components/ProfileBtn.module.sass";
+import { ButtonHTMLAttributes } from "react";
 import Button from "../common/Button";
 import Icon from "../common/Icon";
 
-type Props = {
-  onClick: () => void;
-};
+type Props = ButtonHTMLAttributes<HTMLButtonElement>;
 
-function ProfileButton({ onClick }: Props) {
+function ProfileButton({ ...props }: Props) {
   return (
-    <div className={styles.profileContainer}>
-      <Button
-        type="button"
-        onClick={onClick}
-        aria-label="profile dropdown button"
-        className={styles.profileBtn}
-      >
-        <Icon name="avatar" className={styles.avatarIcon} />
-        <Icon name="collapse-open" className={styles.collapseOpenIcon} />
-      </Button>
-    </div>
+    <Button
+      type="button"
+      aria-label="profile dropdown button"
+      className={styles.profileBtn}
+      {...props}
+    >
+      <Icon name="avatar" className={styles.avatarIcon} />
+      <Icon name="collapse-open" className={styles.collapseOpenIcon} />
+    </Button>
   );
 }
 
