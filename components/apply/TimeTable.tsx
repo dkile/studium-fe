@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
+import styles from "@/styles/components/TimeTable.module.sass";
 import Cell, { SelectState } from "./Cell";
-// import styles from "@/styles/components/TimeTable.module.sass";
 
 const DayOfTheWeek: Record<number, string> = {
   0: "Mon",
@@ -83,10 +83,9 @@ function TimeTable({
         for (let j = 0; j < newTable[i].length; j += 1) {
           if (i <= maxRow && i >= minRow && j <= maxCol && j >= minCol) {
             newTable[i][j] = SelectState.ToSelect;
+          } else {
+            newTable[i][j] = exTable.current[i][j];
           }
-          // else {
-          //   newTable[i][j] = exTable.current[i][j];
-          // }
         }
       }
       setTable(newTable);
@@ -95,7 +94,6 @@ function TimeTable({
 
   const handleMouseUp = () => {
     setDragging(false);
-    exTable.current = [...table];
     const selected = [];
     const newTable = structuredClone(table);
 
@@ -111,10 +109,11 @@ function TimeTable({
     }
     onChange(selected);
     setTable(newTable);
+    exTable.current = newTable;
   };
 
   return (
-    <table>
+    <table className={styles.timeTable}>
       <thead>
         <tr>
           {tableHeads.map((head, i) => (

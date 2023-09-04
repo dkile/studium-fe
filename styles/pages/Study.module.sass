@@ -85,3 +85,84 @@
 
   &:hover
     background-color: vars.$color-primary--dark
+
+
+.studyDetailCollapseBtn
+  inline-size: 100%
+
+  & > div
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+
+.collapseOpenIcon
+  & > svg
+    width: 24px
+    height: 24px  
+
+
+.applyForm
+  padding-block: 32px
+
+  & > fieldset
+    display: flex
+    flex-direction: column
+    gap: 16px
+    
+    & > legend
+      @include typo.text--20
+      @include typo.text--medium
+
+      padding-block: 24px
+
+
+.applyFormInputField
+  @include typo.text--16
+
+  inline-size: 100%
+  padding-inline: 8px
+  
+  & > label
+    inline-size: max-content
+    display: block
+
+  & > input
+    inline-size: 100%
+    margin-top: 8px
+    padding-block: 8px
+    padding-inline: 16px
+    border: 1px solid vars.$color-gray-1
+    border-radius: 4px
+    outline: none
+
+    &:hover
+      border: vars.$color-gray-3 solid 1px
+
+    &:focus-visible
+      outline: vars.$color-secondary solid 1px
+  
+  & > small
+    color: vars.$color-red
+  
+
+.applyFormHeader
+  @include typo.text--20
+  
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+
+.applyFormSubmitBtn
+  @include typo.text--16
+
+  padding-block: 12px
+  padding-inline: 16px
+  background-color: vars.$color-primary
+  border-radius: 12px
+  color: vars.$color-white
+  transition: background-color 0.15s vars.$ease-in-out-1
+
+  &:hover
+    background-color: vars.$color-primary--dark

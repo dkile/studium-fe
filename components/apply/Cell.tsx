@@ -15,8 +15,6 @@ type CellProps = {
   handleMouseUp: (point: [number, number]) => void;
 };
 
-// on, off state
-// on trigger event: mousedown,
 function Cell({
   label,
   state,
@@ -45,10 +43,10 @@ function Cell({
       onMouseDown={onMouseDown}
       onMouseEnter={onMouseEnter}
       onMouseUp={onMouseUp}
-      data-state={state}
       className={styles.cell}
     >
       {label}
+      <div data-state={state} className={styles.selectedBox} />
     </td>
   );
 }
