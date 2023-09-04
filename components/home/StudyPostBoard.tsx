@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 
 import styles from "@/styles/pages/Home.module.sass";
-import { StudyOverview } from "@/types/study";
 import { getStudyList } from "@/controllers/home/controller";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import PostBoard from "@/components/home/PostBoard";
@@ -10,6 +9,7 @@ import Button from "@/components/common/Button";
 import StudyOverviewCard from "@/components/home/StudyOverviewCard";
 import Grid from "@/components/common/Grid";
 import Noob from "@/components/common/Noob";
+import { StudyOverview } from "@/controllers/home/types";
 
 type Props = {
   studies: StudyOverview[];

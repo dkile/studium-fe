@@ -63,20 +63,25 @@
   gap: 32px
 
 
-.sidePanel
+.studyDetailSidePanel
   padding-block: 32px
 
 
-.buttonContainer
+.studyDetailSidePanelButtons
   display: flex
   gap: 16px
+
 
 
 .applyBtn
   @include typo.text--16
   
-  padding-block: 10px
-  padding-inline: 20px
+  padding-block: 12px
+  padding-inline: 16px
   color: vars.$color-white
   border-radius: 8px
   background-color: vars.$color-primary
+  transition: background-color 0.15s vars.$ease-in-out-1
+
+  &:hover
+    background-color: vars.$color-primary--dark

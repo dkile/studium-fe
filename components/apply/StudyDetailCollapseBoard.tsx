@@ -1,10 +1,10 @@
-import { Study } from "@/factories/studyFactory";
-import Image from "next/image";
-import Link from "next/link";
+import { StudyApply } from "@/controllers/study/types";
 import CollapseBoard from "../common/CollapseBoard";
+import StudyTagInfo from "../study/StudyTagInfo";
+import Icon from "../common/Icon";
 
 type Props = {
-  studyDetail: Study;
+  studyDetail: Omit<StudyApply, "questions">;
 };
 
 function StudyDetailCollapseBoard({ studyDetail }: Props) {
@@ -33,24 +33,16 @@ function StudyDetailCollapseBoard({ studyDetail }: Props) {
       <CollapseBoard.Board>
         <div>
           <ul>
-            {studyDetail.tags.map(tag => (
-              <li key={tag.id}>
-                <Link href={`/search?tag=${tag.id}`}>{tag.label}</Link>
-              </li>
-            ))}
+            <StudyTagInfo tags={studyDetail.tags} />
           </ul>
         </div>
         <div>
           <h3>스터디 리더</h3>
           <div>
             <div>
-              <Image
-                src={studyDetail.leader.profileImage}
-                alt="leader profile image"
-              />
+              <Icon name="avatar" />
               <div>
-                <strong>{studyDetail.leader.name}</strong>
-                <small>{studyDetail.leader.contact}</small>
+                <strong>{studyDetail.leader.nickname}</strong>
               </div>
             </div>
             <p>{studyDetail.leader.intro}</p>
@@ -59,10 +51,7 @@ function StudyDetailCollapseBoard({ studyDetail }: Props) {
         <div>
           <h3>진행 방식</h3>
           <div>
-            {studyDetail.process.map((pc, i) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <p key={i}>{pc}</p>
-            ))}
+            <p>{studyDetail.progress}</p>
           </div>
         </div>
         <div>
@@ -77,19 +66,19 @@ function StudyDetailCollapseBoard({ studyDetail }: Props) {
         <div>
           <h3>스터디 진행 기간</h3>
           <div>
-            <p>{studyDetail.processDuration}</p>
+            <p>{studyDetail.progressPeriod}</p>
           </div>
         </div>
         <div>
           <h3>스터디 모집 기간</h3>
           <div>
-            <p>{studyDetail.recruitDuration}</p>
+            <p>{studyDetail.recruitPeriod}</p>
           </div>
         </div>
         <div>
           <h3>모집 인원</h3>
           <div>
-            <p>{studyDetail.recruiting}</p>
+            <p>{studyDetail.recruitsNumber}</p>
           </div>
         </div>
         <div>

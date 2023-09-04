@@ -1,7 +1,7 @@
-import { StudyOverview } from "@/types/study";
 import Carousel from "@/components/common/carousel/Carousel";
 import PostBoard from "@/components/home/PostBoard";
 import StudyOverviewCard from "@/components/home/StudyOverviewCard";
+import { StudyOverview } from "@/controllers/home/types";
 
 type Props = {
   studies: StudyOverview[];

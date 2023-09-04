@@ -1,6 +1,6 @@
 import { Study } from "@/apis/study/types";
-import { StudyOverview } from "@/types/study";
 import { calculateDateDiff } from "@/utils/util-func";
+import { StudyOverview } from "./types";
 
 export const resolveRecruitRemainTime = (diff: {
   day: number;

@@ -1,6 +1,7 @@
 import StudyDetailCollapseBoard from "@/components/apply/StudyDetailCollapseBoard";
 import TimeTable from "@/components/apply/TimeTable";
-import getStudyApplyPage, { Study } from "@/factories/studyFactory";
+import { getStudyApply } from "@/controllers/study/controller";
+import { StudyApply } from "@/controllers/study/types";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { useState } from "react";
@@ -11,10 +12,10 @@ type Params = {
 } & ParsedUrlQuery;
 
 export const getServerSideProps: GetServerSideProps<{
-  data: Study;
+  data: StudyApply;
 }> = async ({ params }) => {
   const { id } = params as Params;
-  const data = await getStudyApplyPage(id);
+  const data = await getStudyApply(Number(id));
 
   return { props: { data } };
 };
@@ -50,9 +51,9 @@ function Page({
           <form onSubmit={onSubmit}>
             <fieldset>
               <legend>스터디 리더가 작성한 질문에 답해주세요</legend>
-              {data.questionnaire.map(({ id, question }) => (
-                <div key={`questionnaire-${id}`}>
-                  <label htmlFor={`qn-${id}`}>{question}</label>
+              {data.questions.map(({ id, text }) => (
+                <div key={`question-${id}`}>
+                  <label htmlFor={`qn-${id}`}>{text}</label>
                   <input
                     id={`qn-${id}`}
                     type="text"

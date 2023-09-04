@@ -23,7 +23,9 @@ export const fetchOnFireStudyList = async (): Promise<OnFireStudyResponse> => {
   return data;
 };
 
-export const getStudyById = async (id: number): Promise<StudyByIdResponse> => {
+export const fetchStudyById = async (
+  id: number,
+): Promise<StudyByIdResponse> => {
   const data = await fetchWithHandler(
     `https://api.server.d0lim.com/studium/api/v1/study/${id}`,
   );
