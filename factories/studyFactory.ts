@@ -9,37 +9,20 @@ const getStudyDetail = async (studyId: number): Promise<StudyDetail> => {
     id: study.id,
     title: study.name,
     leader: {
-      id: 1,
-      name: "Olivia Rhye",
-      email: "olivia@untitledui.com",
-      thumnail:
+      id: study.leader.id,
+      nickname: study.leader.nickname,
+      profileUrl:
         "https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/icon/avatar.svg",
-      intro:
-        "15년차 토익 강사. 수능 영어 1등급 (쉽다)" +
-        "\n" +
-        "쉬운 문제만 가르칩니다.",
+      intro: study.leader.intro,
     },
-    tags: [
-      {
-        id: 1,
-        name: "Label",
-      },
-      {
-        id: 2,
-        name: "Label",
-      },
-      {
-        id: 3,
-        name: "Label",
-      },
-    ],
+    tags: study.tags,
     rules: study.rules,
-    progress: [""],
+    progress: study.templateContent,
     progressPeriod: `${convertDateToFormat(
       new Date(study.startDate),
       "yyyy.mm.dd",
     )} ~ ${convertDateToFormat(new Date(study.endDate), "yyyy.mm.dd")}`,
-    recruitsNumber: `${study.recruiting}명`,
+    recruitsNumber: `${study.total}명`,
     recruitPeriod: `${convertDateToFormat(
       new Date(study.recruitEndDate),
       "yyyy.mm.dd",

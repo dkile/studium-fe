@@ -1,17 +1,19 @@
 import Link from "next/link";
 
 import styles from "@/styles/pages/Study.module.sass";
+import { Tag } from "@/types/study";
 
 type StudyTagListProps = {
-  tags: { id: number; name: string }[];
+  tags: Tag[];
 };
 
 function StudyTagList({ tags }: StudyTagListProps) {
   return (
     <ul className={styles.studyTagList}>
-      {tags.map(tag => (
-        <li key={tag.id} className={styles.studyTag}>
-          <Link href={`/tag/${tag.id}`}>{tag.name}</Link>
+      {tags.map((tag, i) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <li key={i} className={styles.studyTag}>
+          <Link href={`/search?tag=${tag.name}`}>{tag.name}</Link>
         </li>
       ))}
     </ul>

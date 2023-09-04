@@ -20,7 +20,6 @@ export type StudyOverview = {
 export type SortBy = "최신순" | "추천순" | "인기순";
 
 export type Tag = {
-  id: number;
   name: string;
 };
 
@@ -31,14 +30,13 @@ export type StudyDetail = {
   recruitPeriod: string;
   recruitsNumber: string;
   location: string;
-  progress: string[];
+  progress: string;
   rules: string[];
   tags: Tag[];
   leader: {
     id: number;
-    name: string;
+    nickname: string;
     intro: string;
-    thumnail: string;
-    email: string;
+    profileUrl: string;
   };
 };

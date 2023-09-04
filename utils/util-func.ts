@@ -1,11 +1,3 @@
-export const fetchData = async (url: string, options?: RequestInit) => {
-  const res = await fetch(url, options);
-  if (!res.ok) throw new Error(`fetching data from ${url} failed`);
-  const data = await res.json();
-
-  return data;
-};
-
 export const calculateDateDiff = (before: Date, after: Date) => {
   const SEC_IN_MSEC = 1000;
   const MINUTE_IN_MSEC = SEC_IN_MSEC * 60;
@@ -35,8 +27,8 @@ export const calculateDateDiff = (before: Date, after: Date) => {
     hour: hourDiff,
     minute: minuteDiff,
     second: secondDiff,
-  }; 
-}
+  };
+};
 
 export const convertDateToObj = (date: Date) => ({
   year: date.getFullYear(),
