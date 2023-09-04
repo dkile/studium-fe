@@ -2,30 +2,35 @@ export type StudyResponse = Study[];
 
 export type StudyByIdResponse = Study;
 
+export type OnFireStudyResponse = Study[];
+
 export type Study = {
   id: number;
-  leaderId: number;
+  leader: {
+    id: number;
+    createdAt: string;
+    updatedAt: string;
+    universalAccountId: string;
+    manners: number;
+    intro: string;
+    profileURL: string;
+    nickname: string;
+  };
   createdAt: string;
   updatedAt: string;
-  intro: string;
-  rules: string[];
-  location: string;
-  status: string;
-  endDate: string;
-  recruitEndDate: string;
-  recruitStartDate: string;
-  startDate: string;
   name: string;
-  tags: {
-    id: number;
-    label: string;
-  }[];
-  questionnaire: {
-    id: number;
-    question: string;
-  }[];
+  recruitStartDate: string;
+  recruitEndDate: string;
+  intro: string;
+  rules: [string];
+  startDate: string;
+  endDate: string;
+  locationDetail: string;
+  location: string;
+  total: number;
   recruited: number;
-  recruiting: number;
-  studyTemplate: string;
-  title: string;
+  templateContent: string;
+  viewCount: number;
+  tags: { name: string }[];
+  questions: { id: number; text: string; studyId: number }[];
 };

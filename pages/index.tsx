@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { getHomePageData } from "@/factories/homeFactory";
+import { getHomePageData } from "@/controllers/home/controller";
 import StudyPostBoard from "@/components/home/StudyPostBoard";
 import PrivatePostBoardList from "@/components/home/PrivatePostBoardList";
 import { InferGetServerSidePropsType } from "next";

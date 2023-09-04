@@ -1,19 +1,41 @@
 import styles from "@/styles/layout/Layout.module.sass";
-import { useState } from "react";
 import ProfileButton from "@/components/profile/ProfileButton";
-import ProfileSubmenu from "@/components/profile/ProfileSubmenu";
+import { useRouter } from "next/router";
 
 function GlobalAddon() {
-  const [popped, setPopped] = useState(false);
+  const loggedIn = false;
+  const router = useRouter();
 
-  const onClickProfileButton = () => {
-    setPopped(prev => !prev);
+  const handleClickLoginButton = () => {
+    router.push("/login");
+  };
+
+  const handleClickJoinButton = () => {
+    router.push("/join");
   };
 
   return (
     <div className={styles.mainAddons}>
-      <ProfileButton onClick={onClickProfileButton} />
-      {popped ? <ProfileSubmenu /> : null}
+      {loggedIn === false ? (
+        <>
+          <button
+            type="button"
+            onClick={handleClickLoginButton}
+            className={styles.loginBtn}
+          >
+            로그인
+          </button>
+          <button
+            type="button"
+            onClick={handleClickJoinButton}
+            className={styles.joinBtn}
+          >
+            회원가입
+          </button>
+        </>
+      ) : (
+        <ProfileButton />
+      )}
     </div>
   );
 }

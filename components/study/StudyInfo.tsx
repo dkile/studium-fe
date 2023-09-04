@@ -1,7 +1,6 @@
-import { StudyDetail } from "@/types/study";
-
 import styles from "@/styles/pages/Study.module.sass";
-import StudyTagList from "./StudyTagList";
+import { StudyDetail } from "@/controllers/study/types";
+import StudyTagInfo from "./StudyTagInfo";
 import StudyLeaderInfo from "./StudyLeaderInfo";
 import StudyProgressInfo from "./StudyProgressInfo";
 import StudyRuleInfo from "./StudyRuleInfo";
@@ -9,6 +8,7 @@ import StudyProgressPeriodInfo from "./StudyProgressPeriodInfo";
 import StudyRecruitPeriodInfo from "./StudyRecruitPeriodInfo";
 import StudyRecruitsNumberInfo from "./StudyRecruitsNumberInfo";
 import StudyLocationInfo from "./StudyLocationInfo";
+import StudyTitleInfo from "./StudyTitleInfo";
 
 type StudyInfoProps = {
   info: StudyDetail;
@@ -29,10 +29,8 @@ function StudyInfo({ info }: StudyInfoProps) {
   return (
     <div className={styles.studyContainer}>
       <header className={styles.studyHeader}>
-        <h1 className={styles.studyTitle}>{title}</h1>
-        <div className={styles.studyOutline}>
-          <StudyTagList tags={tags} />
-        </div>
+        <StudyTitleInfo title={title} />
+        <StudyTagInfo tags={tags} />
       </header>
       <div className={styles.studyContent}>
         <StudyLeaderInfo leader={leader} />

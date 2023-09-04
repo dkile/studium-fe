@@ -1,12 +1,26 @@
 @use "../abstracts/_variables" as vars
+@use "../base/_typography" as typo
 
 .dropdownContainer
   top: 0
+  border-radius: 12px
+  overflow: hidden
 
 
 .dropdownItem
   inline-size: 100%
+  padding: 12px 16px
   border-radius: 0
+  color: vars.$color-gray-3
 
   display: flex
   gap: 16px
+
+  &:hover
+    background-color: vars.$color-offwhite
+  
+  &[data-selected="true"]
+    @include typo.text--medium
+    
+    color: vars.$color-gray-4
+    

@@ -3,10 +3,19 @@
 @use "../abstracts/_variables" as vars
   
 .overviewContainer
-  min-inline-size: 224px
+  min-width: 224px
+  min-height: 152px
   display: flex
   flex-direction: column
   gap: 8px
+  border-radius: 16px
+  padding: 16px
+  background-color: vars.$color-white
+  transition: background-color 0.15s vars.$ease-in-out-1
+
+  &:hover
+    background-color: vars.$color-offwhite
+    
 
 
 .overviewRemainTime
@@ -36,8 +45,9 @@
   
 
 .overviewTags
+  margin-top: 8px
   overflow-inline: hidden
-
+  
   display: flex
   gap: 4px
   

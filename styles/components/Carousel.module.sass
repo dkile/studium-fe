@@ -13,7 +13,6 @@
 
   grid-row: 1/-1
   grid-column: 1/-1
-  padding-block: 16px
   overflow-x: auto
   overscroll-behavior-x: contain
   scroll-snap-type: x none
@@ -75,11 +74,11 @@
   
   &[data-swipe-direction="left"]
     grid-column: 1
-    // margin-right: 56px
+    margin-right: 56px
 
   &[data-swipe-direction="right"]
     grid-column: 3
-    // margin-left: 56px
+    margin-left: 56px
 
 
   &[data-swipe-direction="right"]:not([disabled]):is(:hover, :focus-visible) svg > path 
