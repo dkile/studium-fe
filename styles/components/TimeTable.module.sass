@@ -1,0 +1,13 @@
+@use "../abstracts/_variables" as vars
+  
+.cell
+  background-color: vars.$color-white
+
+  &:hover
+    background-color: vars.$color-gray-1
+
+  &[data-state="1"]
+    background-color: vars.$color-gray-2
+  
+  &[data-state="2"]
+    background-color: vars.$color-gray-3
