@@ -10,7 +10,7 @@ const initialState: ModalState = {
     isShow: false,
     prevModal: "",
   },
-  joinCompelete: {
+  joinComplete: {
     isShow: false,
     prevModal: "",
   },
