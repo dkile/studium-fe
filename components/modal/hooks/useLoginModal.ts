@@ -8,8 +8,9 @@ export default function useLoginModal() {
     console.log(response);
     const API_MEMBER = "https://api.server.d0lim.com/turnstile";
     const loginUrl = `${API_MEMBER}/api/v1/auth/login/google`;
-    const data = { code: response.code };
     try {
+      const data = { code: response.code };
+      console.log(data);
       const tokens = await axios.post(loginUrl, data);
       const authorizationHeaderValue = tokens.headers.authorization;
       console.log(tokens);
@@ -35,7 +36,7 @@ export default function useLoginModal() {
     console.log("Login Failed");
   };
 
-  const googleLogin = useGoogleLogin({ onSuccess, onError });
+  const googleLogin = useGoogleLogin({ onSuccess, onError, flow: "auth-code" });
 
   const state = {};
   const handler = { googleLogin };
