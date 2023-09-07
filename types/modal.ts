@@ -1,4 +1,4 @@
-export type ModalType = "login" | "join" | "joinCompelete";
+export type ModalType = "login" | "join" | "joinComplete";
 
 export type EachModalState = {
   isShow: boolean;

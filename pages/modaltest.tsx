@@ -1,4 +1,5 @@
-import Modal from "@/components/common/Modal";
+// import Modal from "@/components/common/Modal";
+import LoginModal from "@/components/modal/LoginModal";
 import useModalTest from "../components/common/hooks/useModalTest";
 
 export default function ModalTest() {
@@ -9,11 +10,11 @@ export default function ModalTest() {
         {" "}
         show modal{" "}
       </button>
-      <Modal
-        type="login"
-        showCancelBtn
-        showPrevBtn
-        contents={<div>contents</div>}
+      <LoginModal
+      // type="login"
+      // showCancelBtn
+      // showPrevBtn
+      // contents={<div>contents</div>}
       />
     </>
   );
