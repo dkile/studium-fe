@@ -21,3 +21,19 @@ export type StudyDetail = {
 export type StudyApply = StudyDetail & {
   questions: { id: number; text: string }[];
 };
+
+export type StudyRunning = StudyDetail & {
+  notice: StudyNotice;
+};
+
+export type StudyNotice = {
+  content: string;
+};
+
+export type StudyJournal = {
+  id: number;
+  lastUpdate: string;
+  title: string;
+  content: string;
+  author: string;
+};

@@ -1,5 +1,6 @@
 @use "../base/_typography" as typo
 @use "../abstracts/_variables" as vars
+@use "../abstracts/_mixins" as mix
 
 .container
   padding-block: 16px
@@ -166,3 +167,107 @@
 
   &:hover
     background-color: vars.$color-primary--dark
+
+  
+.studyContentTabMenus
+  @include typo.text--18
+  
+  width: 100%
+  display: flex
+  gap: 24px
+
+  & > button
+    padding-block: 8px
+    outline: none
+
+    &[data-selected="true"]
+      color: vars.$color-primary
+      border-bottom: 2px solid vars.$color-primary
+
+
+.studyContentTabPanels
+  padding-block: 32px
+
+
+.studyContentTabPanel
+  display: flex 
+  flex-direction: column
+  gap: 48px
+
+
+.studyNotice
+  & > header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding-block: 16px
+
+    & > h2
+      @include typo.text--20
+      @include typo.text--bold
+
+  & > .studyNoticeContent
+    & > textarea
+      width: 100%
+      height: 180px
+      border: 1px solid vars.$color-black
+      border-radius: 8px
+      padding: 16px
+      resize: none
+      outline: none
+
+  
+.studyJournalListPanel
+  & > header
+    padding-block: 16px
+    display: flex
+    justify-content: flex-end
+
+    & > button
+      @include typo.text--16
+      
+      padding-inline: 24px
+      padding-block: 8px
+      color: vars.$color-white
+      background-color: vars.$color-primary
+      border-radius: 8px
+
+
+.studyJournalList
+  display: flex
+  flex-direction: column
+  gap: 8px
+
+
+.studyJournalItem
+  padding: 16px
+  border-radius: 8px
+  background-color: vars.$color-offwhite
+
+  & > header
+    display: flex
+    align-items: center
+
+    & > h3
+      @include typo.text--18
+
+    & > small
+      @include typo.text--14
+
+      color: vars.$color-primary
+    
+    & > .studyJournalItemAuthor
+      margin-left: 16px
+
+    & > .studyJournalItemDate
+      margin-left: auto
+  
+  & > div
+    margin-top: 16px
+
+    & > p
+      @include typo.text--14
+      @include mix.lineClampEllipsis($max-lines: 2)
+    
+      color: vars.$color-gray-4
+      
