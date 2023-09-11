@@ -2,6 +2,8 @@ import {
   OnFireStudyResponse,
   StudyResponse,
   StudyByIdResponse,
+  StudyJournalListResponse,
+  StudyNoticeResponse,
 } from "@/apis/study/types";
 import fetchWithHandler from "../fetch";
 
@@ -28,6 +30,26 @@ export const fetchStudyById = async (
 ): Promise<StudyByIdResponse> => {
   const data = await fetchWithHandler(
     `https://api.server.d0lim.com/studium/api/v1/study/${id}`,
+  );
+
+  return data;
+};
+
+export const fetchStudyJournalList = async (
+  id: number,
+): Promise<StudyJournalListResponse> => {
+  const data = await fetchWithHandler(
+    `https://api.server.d0lim.com/studium/api/v1/study/${id}/journals`,
+  );
+
+  return data;
+};
+
+export const fetchStudyNotice = async (
+  id: number,
+): Promise<StudyNoticeResponse> => {
+  const data = await fetchWithHandler(
+    `https://api.server.d0lim.com/studium/api/v1/study/${id}/notices`,
   );
 
   return data;

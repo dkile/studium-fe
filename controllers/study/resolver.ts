@@ -1,6 +1,6 @@
-import { Study } from "@/apis/study/types";
+import { Study, StudyNoticeResponse } from "@/apis/study/types";
 import { convertDateToFormat, extractTimeInFormat } from "@/utils/util-func";
-import { StudyApply, StudyDetail } from "./types";
+import { StudyApply, StudyDetail, StudyNotice } from "./types";
 
 export const resolveStudyDetail = (study: Study): StudyDetail => ({
   id: study.id,
@@ -54,4 +54,11 @@ export const resolveStudyApply = (study: Study): StudyApply => ({
     id: question.id,
     text: question.text,
   })),
+});
+
+export const resolveStudyNotice = (
+  notice: StudyNoticeResponse,
+): StudyNotice => ({
+  id: notice.id,
+  content: notice.content,
 });

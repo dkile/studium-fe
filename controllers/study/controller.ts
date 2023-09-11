@@ -1,6 +1,10 @@
-import { fetchStudyById } from "@/apis/study/api";
-import { resolveStudyApply, resolveStudyDetail } from "./resolver";
-import { StudyApply, StudyDetail } from "./types";
+import { fetchStudyById, fetchStudyNotice } from "@/apis/study/api";
+import {
+  resolveStudyApply,
+  resolveStudyDetail,
+  resolveStudyNotice,
+} from "./resolver";
+import { StudyApply, StudyDetail, StudyRunning } from "./types";
 
 export const getStudyDetail = async (studyId: number): Promise<StudyDetail> => {
   const [study] = await Promise.all([fetchStudyById(studyId)]);
@@ -16,4 +20,20 @@ export const getStudyApply = async (studyId: number): Promise<StudyApply> => {
   const resolvedStudyApply = resolveStudyApply(study);
 
   return resolvedStudyApply;
+};
+
+export const getStudyRunning = async (
+  studyId: number,
+): Promise<StudyRunning> => {
+  const [study, notice] = await Promise.all([
+    fetchStudyById(studyId),
+    fetchStudyNotice(studyId),
+  ]);
+
+  const resolvedStudy = resolveStudyDetail(study);
+  const resolvedNotice = resolveStudyNotice(notice);
+
+  return Object.assign(resolvedStudy, {
+    notice: resolvedNotice,
+  });
 };

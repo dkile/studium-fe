@@ -4,6 +4,24 @@ export type StudyByIdResponse = Study;
 
 export type OnFireStudyResponse = Study[];
 
+export type StudyJournalListResponse = {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  content: string;
+  authorId: number;
+  studyId: number;
+}[];
+
+export type StudyNoticeResponse = {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  content: string;
+  studyId: number;
+};
+
 export type Study = {
   id: number;
   leader: {
@@ -22,7 +40,7 @@ export type Study = {
   recruitStartDate: string;
   recruitEndDate: string;
   intro: string;
-  rules: [string];
+  rules: string[];
   startDate: string;
   endDate: string;
   locationDetail: string;
