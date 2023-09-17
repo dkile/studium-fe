@@ -7,7 +7,7 @@ export type StudyJournalListProps = {
 function StudyJournalList({ studyId }: StudyJournalListProps) {
   const studyJournalList = [
     {
-      id: 0,
+      id: studyId,
       updatedAt: "string",
       title: "string",
       content: "string",

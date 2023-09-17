@@ -3,23 +3,24 @@ import StudyDetailCollapseBoard from "@/components/apply/StudyDetailCollapseBoar
 import TimeTable from "@/components/apply/TimeTable";
 import { getStudyApply } from "@/controllers/study/controller";
 import { StudyApply } from "@/controllers/study/types";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { InferGetServerSidePropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import appGetServerSideProps from "@/apis/appGetServerSideProps";
 
 type Params = {
   id: string;
 } & ParsedUrlQuery;
 
-export const getServerSideProps: GetServerSideProps<{
+export const getServerSideProps = appGetServerSideProps<{
   data: StudyApply;
-}> = async ({ params }) => {
+}>(async ({ params }) => {
   const { id } = params as Params;
   const data = await getStudyApply(Number(id));
 
   return { props: { data } };
-};
+});
 
 type FormData = Record<string, string>;
 

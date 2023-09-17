@@ -1,5 +1,5 @@
 // import StudyTagList from "@/components/study/StudyTagList";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { InferGetServerSidePropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
 import styles from "@/styles/pages/Study.module.sass";
 import StudyLeaderInfo from "@/components/study/StudyLeaderInfo";
@@ -14,16 +14,17 @@ import Tab from "@/components/common/tab/Tab";
 import StudyLogList from "@/components/study/StudyJournalList";
 import { StudyRunning } from "@/controllers/study/types";
 import { getStudyRunning } from "@/controllers/study/controller";
+import appGetServerSideProps from "@/apis/appGetServerSideProps";
 
-export const getServerSideProps: GetServerSideProps<{
+export const getServerSideProps = appGetServerSideProps<{
   data: StudyRunning;
-}> = async ({ params }) => {
+}>(async ({ params }) => {
   const { id } = params as ParsedUrlQuery & { id: string };
   const studyId = Number(id);
-  const [data] = await Promise.all([getStudyRunning(studyId)]);
+  const data = await getStudyRunning(studyId);
 
   return { props: { data } };
-};
+});
 
 function Page({
   data: study,
