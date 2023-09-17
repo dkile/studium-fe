@@ -4,11 +4,12 @@ import { getHomePageData } from "@/controllers/home/controller";
 import StudyPostBoard from "@/components/home/StudyPostBoard";
 import PrivatePostBoardList from "@/components/home/PrivatePostBoardList";
 import { InferGetServerSidePropsType } from "next";
+import appGetServerSideProps from "@/apis/appGetServerSideProps";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = appGetServerSideProps(async () => {
   const { data } = await getHomePageData();
   return { props: { data } };
-};
+});
 
 export default function Home({
   data,

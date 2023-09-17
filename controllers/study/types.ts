@@ -27,6 +27,7 @@ export type StudyRunning = StudyDetail & {
 };
 
 export type StudyNotice = {
+  id: number;
   content: string;
 };
 
