@@ -6,7 +6,7 @@ import { initModal } from "@/modules/modal";
 export default function useLoginModal() {
   const onSuccess = async (response: any) => {
     console.log(response);
-    const API_MEMBER = "https://api.server.d0lim.com/turnstile";
+    const API_MEMBER = "https://turnstile.server.d0lim.com";
     const loginUrl = `${API_MEMBER}/api/v1/auth/login/google`;
     try {
       const data = { code: response.code };
