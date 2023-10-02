@@ -2,15 +2,7 @@ import { useRef, useState } from "react";
 import styles from "@/styles/components/TimeTable.module.sass";
 import Cell, { SelectState } from "./Cell";
 
-const DayOfTheWeek: Record<number, string> = {
-  0: "Mon",
-  1: "Tue",
-  2: "Wed",
-  3: "Thu",
-  4: "Fri",
-  5: "Sat",
-  6: "Sun",
-};
+const DayOfTheWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
 const convertFloatToTime = (fl: number) => {
   const minutePerHour = 60;
@@ -24,7 +16,7 @@ const convertFloatToTime = (fl: number) => {
 };
 
 type Props = {
-  onChange: (data: string[]) => void;
+  onChange: (data: Record<string, number[]>) => void;
   options?: {
     startTime: number;
     endTime: number;
@@ -94,16 +86,28 @@ function TimeTable({
 
   const handleMouseUp = () => {
     setDragging(false);
-    const selected = [];
+    const selected: Record<string, number[]> = Object.values(
+      DayOfTheWeek,
+    ).reduce(
+      (prev, cur) => ({
+        [cur]: [],
+        ...prev,
+      }),
+      {},
+    );
     const newTable = structuredClone(table);
 
     for (let i = 0; i < table.length; i += 1) {
       for (let j = 0; j < table[i].length; j += 1) {
         if (table[i][j] === SelectState.ToSelect) {
-          selected.push(
-            `${DayOfTheWeek[j]}-${convertFloatToTime(startTime + step * i)}`,
-          );
           newTable[i][j] = mode;
+        }
+      }
+    }
+    for (let i = 0; i < newTable.length; i += 1) {
+      for (let j = 0; j < newTable[i].length; j += 1) {
+        if (newTable[i][j] === SelectState.Selected) {
+          selected[DayOfTheWeek[j]].push(startTime + step * i);
         }
       }
     }
