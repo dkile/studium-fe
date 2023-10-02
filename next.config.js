@@ -34,6 +34,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/v1/:path*",
+        destination: "https://studium.server.d0lim.com/api/v1/:path*",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
