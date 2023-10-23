@@ -1,24 +1,31 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { initModal } from "@/modules/modal";
+import { hideModal } from "@/modules/modal";
+import { setAccessToken, setIsLogin } from "@/modules/auth";
+import { useDispatch, batch } from "react-redux";
 // import { setAccessToken, setIsLogin } from "@/modules/auth";
 
 export default function useLoginModal() {
+  const dispatch = useDispatch();
+  const onError = () => {
+    console.log("Login Failed");
+    batch(() => {
+      dispatch(setIsLogin(false));
+      dispatch(hideModal("login"));
+    });
+  };
   const onSuccess = async (response: any) => {
-    console.log(response);
     const API_MEMBER = "https://turnstile.server.d0lim.com";
     const loginUrl = `${API_MEMBER}/api/v1/auth/login/google`;
     try {
       const data = { code: response.code };
-      console.log(data);
       const tokens = await axios.post(loginUrl, data);
-      const authorizationHeaderValue = tokens.headers.authorization;
-      console.log(tokens);
-      console.log(tokens.headers);
-      console.log(authorizationHeaderValue);
-      // setAccessToken(authorizationHeaderValue);
-      // setIsLogin(true);
-      initModal("login");
+      const accessToken = tokens.data.access_token;
+      batch(() => {
+        dispatch(setAccessToken(accessToken));
+        dispatch(setIsLogin(true));
+        dispatch(hideModal("login"));
+      });
     } catch (e) {
       console.log(e);
       try {
@@ -26,14 +33,11 @@ export default function useLoginModal() {
           console.log("new user, show nickname form");
           // setAccessToken((e as any).response.data.token.access_token);
           // nextModal({ current: "login", next: "join" });
-        }
+        } else throw new Error();
       } catch (err) {
-        //
+        onError();
       }
     }
-  };
-  const onError = () => {
-    console.log("Login Failed");
   };
 
   const googleLogin = useGoogleLogin({ onSuccess, onError, flow: "auth-code" });

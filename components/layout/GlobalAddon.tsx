@@ -1,38 +1,23 @@
 import styles from "@/styles/layout/Layout.module.sass";
 import ProfileButton from "@/components/profile/ProfileButton";
-import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { selectAuthInfo } from "@/modules/auth";
+import { showModal } from "@/modules/modal";
 
 function GlobalAddon() {
-  const loggedIn = false;
-  const router = useRouter();
-
-  const handleClickLoginButton = () => {
-    router.push("/login");
-  };
-
-  const handleClickJoinButton = () => {
-    router.push("/join");
-  };
+  const dispatch = useDispatch();
+  const loginInfo = useSelector(selectAuthInfo);
 
   return (
     <div className={styles.mainAddons}>
-      {loggedIn === false ? (
-        <>
-          <button
-            type="button"
-            onClick={handleClickLoginButton}
-            className={styles.loginBtn}
-          >
-            로그인
-          </button>
-          <button
-            type="button"
-            onClick={handleClickJoinButton}
-            className={styles.joinBtn}
-          >
-            회원가입
-          </button>
-        </>
+      {loginInfo.islogin === false ? (
+        <button
+          type="button"
+          onClick={() => dispatch(showModal("login"))}
+          className={styles.loginBtn}
+        >
+          로그인
+        </button>
       ) : (
         <ProfileButton />
       )}
