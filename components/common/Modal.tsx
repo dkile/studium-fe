@@ -1,5 +1,6 @@
 import styles from "@/styles/components/Modal.module.sass";
 import { ModalType } from "@/types/modal";
+import Image from "next/image";
 import useModal from "./hooks/useModal";
 
 type ModalInfo = {
@@ -30,7 +31,12 @@ function Modal({ type, showPrevBtn, showCancelBtn, contents }: ModalInfo) {
             className={styles.modalPrev}
             onClick={movePrevModal}
           >
-            {"<-"}
+            <Image
+              src="https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/icon/prev.svg"
+              width={14}
+              height={14}
+              alt="<-"
+            />
           </button>
         )}
         {showCancelBtn && (
@@ -39,7 +45,12 @@ function Modal({ type, showPrevBtn, showCancelBtn, contents }: ModalInfo) {
             className={styles.modalCancel}
             onClick={closeModal}
           >
-            x
+            <Image
+              src="https://studium-fe.s3.ap-northeast-2.amazonaws.com/public/icon/cancel.svg"
+              width={14}
+              height={14}
+              alt="X"
+            />
           </button>
         )}
         <div>{contents}</div>
