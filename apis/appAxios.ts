@@ -19,10 +19,29 @@ function AuthErrorInterceptor(res: AxiosResponse): AxiosResponse {
   return res;
 }
 
+function getAccessToken() {
+  if (typeof window !== "undefined") {
+    // 홈이면 토큰 처리 생략
+    if (window.location.pathname === "/") {
+      return "";
+    }
+
+    const accessToken = window.localStorage.getItem("studium-token");
+    if (accessToken) {
+      return accessToken;
+    }
+
+    alert("로그인 후 이용해주세요.");
+    window.location.replace("/");
+    throw Error("No AccessToken");
+  }
+  return "";
+}
+
 function AuthHeaderInterceptor(
   req: InternalAxiosRequestConfig,
 ): InternalAxiosRequestConfig {
-  const token = "";
+  const token = getAccessToken();
   req.headers.Authorization = `Bearer ${token}`;
 
   return req;
