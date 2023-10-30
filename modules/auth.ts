@@ -3,7 +3,7 @@ import { AuthInfo, RootState } from "@/types/auth";
 
 const initialState: AuthInfo = {
   islogin: false,
-  accessToken: "",
+  accessToken: "aaa",
   nickname: "",
 };
 

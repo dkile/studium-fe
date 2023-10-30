@@ -26,6 +26,7 @@ export default function useLoginModal() {
         dispatch(setIsLogin(true));
         dispatch(hideModal("login"));
       });
+      window.localStorage.setItem("studium-token", accessToken);
     } catch (e) {
       console.log(e);
       try {
